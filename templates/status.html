@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Page</title>
+    <link rel="icon" href="https://bot-hosting.net/assets/img/bothosting.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f8f9fa, #e9ecef);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+.bg-gradient-primary {
+    background: linear-gradient(120deg, #5865f2, #7289da); 
+}
+
+
+.modal-content {
+    transform: translateY(-30px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.form-floating label {
+    color: #99aab5;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-floating input:focus + label {
+    color: #7289da; 
+    font-weight: 500;
+}
+
+
+.modal-footer {
+    border-top: none;
+    background-color: #f6f6f9;
+}
+
+
+.btn-primary {
+    background-color: #5865f2; 
+    border-color: #5865f2;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #667eea; 
+    box-shadow: 0 4px 10px rgba(88, 101, 242, 0.5); 
+    transform: translateY(-2px); 
+    transition: all 0.3s ease-in-out;
+}
+
+
+.btn-outline-secondary {
+    color: #6c757d; 
+    border-color: #6c757d; 
+    background-color: transparent; 
+    transition: all 0.3s ease-in-out; 
+}
+
+.btn-outline-secondary:hover {
+    color: #ffffff; 
+    background-color: #495057; 
+    border-color: #495057; 
+    box-shadow: 0 4px 10px rgba(73, 80, 87, 0.4); 
+    transform: translateY(-2px); 
+}
+.btn-outline-secondary,
+.btn-primary {
+    transition: all 0.3s ease-in-out;
+}
+
+.collapse {
+    text-align: left;
+}
+
+.status-card .fas.fa-chevron-down {
+    transition: transform 0.3s ease-in-out;
+}
+
+.status-card .collapsed .fas.fa-chevron-down {
+    transform: rotate(-90deg); 
+}
+
+
+.form-control {
+    background-color: #f6f6f9; 
+    border: 1px solid #d4d8dd; 
+    color: #2c2f33;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #7289da; 
+    box-shadow: 0 0 5px rgba(114, 137, 218, 0.5); 
+}
+
+
+.invalid-feedback {
+    color: #f04747; 
+}
+
+
+.modal-header {
+    border-bottom: none;
+    padding: 1.5rem 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+.status-strip {
+    display: grid;
+    grid-template-columns: repeat(157, 1fr); /* Distribute 157 strips equally */
+    gap: 1px; /* Minimal spacing between strips */
+    width: 100%; /* Ensures full row usage */
+    justify-content: stretch; /* Evenly fills the row */
+}
+
+.status-line {
+    width: 100%; /* Adjusted to ensure each strip takes its calculated space */
+    height: 25px; 
+    border-radius: 8px;
+}
+
+
+
+.modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif; 
+    display: flex;
+    align-items: center;
+}
+
+.modal-title i {
+    font-size: 1.8rem; 
+    margin-right: 0.9rem;
+}
+
+
+.modal-content {
+    background-color: #ffffff; 
+    border-radius: 12px;
+}
+
+.btn-close {
+    background-color: transparent; 
+    border: none; 
+    transition: all 0.3s ease-in-out; 
+    outline: none;
+}
+
+
+.btn-close:hover {
+    background-color: rgba(220, 53, 69, 0.1); 
+    color: #dc3545; 
+    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2); 
+    transform: scale(1.004); 
+}
+
+
+.btn-close:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+        .rss-btn {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #6c757d; 
+        background-color: #ffffff; 
+        border: 1px solid #dee2e6; 
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .rss-btn i {
+        margin-right: 8px;
+    }
+
+    .rss-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #adb5bd;
+    color: #495057; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-2px); 
+    transition: all 0.3s ease-in-out; 
+}
+
+
+        .status-page {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .status-icon {
+            font-size: 3rem;
+            color: #28a745;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .status-heading {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #212529;
+        }
+
+        .status-description {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+.status-card {
+    display: block; 
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #ffffff; 
+    border: 1px solid #dee2e6; 
+    box-shadow: none; 
+    transition: all 0.3s ease-in-out;
+    text-align: left; 
+}
+.tooltip-inner {
+    background-color: #000; 
+    color: #fff; 
+    border-radius: 4px; 
+    padding: 5px 10px; 
+    font-size: 0.875rem; 
+}
+
+.tooltip-arrow {
+    display: none; 
+}
+
+
+.status-card .status-icon {
+    font-size: 1rem;
+    color: #28a745;   
+    animation: none; 
+}
+
+
+    .progress {
+        height: 24px;
+        border-radius: 12px;
+    }
+
+ 
+        
+ 
+
+        .time-filters .btn {
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+        }
+
+        .time-filters .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px 0;
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+            background-color: #ffffff;
+            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+@media (max-width: 768px) {
+    .navbar-brand {
+        margin-right: auto;
+    }
+
+    .rss-btn {
+        width: 100%;
+        margin: 0.5rem 0;
+        justify-content: center;
+    }
+
+    .navbar-collapse {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+        .status-card .btn-outline-danger {
+            margin-top: 0.5rem; /* Add spacing above the button */
+            width: 100%; /* Optional: make button full width for better usability */
+        }
+
+        .status-card .d-flex.align-items-start {
+            flex-direction: column; /* Stack "Operational" and "Report" button vertically */
+        }
+    }
+
+    /* Modal header style */
+.modal-header {
+    padding: 1rem;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+}
+
+/* Customizing close button */
+.btn-close {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+.btn-close:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* Modal body improvements */
+.modal-body {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+.form-control {
+    font-size: 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 0.8rem;
+    background-color: #f8f9fa;
+}
+.form-control:focus {
+    border-color: #5865f2;
+    box-shadow: 0 0 6px rgba(88, 101, 242, 0.3);
+}
+
+/* Buttons on mobile */
+.modal-footer .btn {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+}
+.modal-footer .btn-primary {
+    background-color: #5865f2;
+    border: none;
+}
+.modal-footer .btn-primary:hover {
+    background-color: #7289da;
+    box-shadow: 0 4px 10px rgba(88, 101, 242, 0.4);
+}
+.modal-footer .btn-outline-secondary {
+    border-color: #dee2e6;
+    color: #6c757d;
+}
+.modal-footer .btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 576px) {
+    .modal-dialog {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .modal-footer .btn {
+        width: 100%; /* Full-width buttons */
+        margin-bottom: 0.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://bot-hosting.net/assets/img/bothosting.png" alt="Bot hosting Logo" height="40" style="border-radius: 8px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Incident History</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <button class="rss-btn mt-3 w-100" data-bs-toggle="modal" data-bs-target="#webhookModal">
+                            <i class="fa-brands fa-discord"></i> Webhooks
+                        </button>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <button class="rss-btn mt-3 w-100">
+                            <i class="fas fa-rss"></i> RSS Feed
+                        </button>
+                    </li>
+                </ul>
+                <div class="d-none d-lg-flex ms-3">
+                    <button class="rss-btn" data-bs-toggle="modal" data-bs-target="#webhookModal">
+                        <i class="fa-brands fa-discord"></i> Webhooks
+                    </button>
+                    <button class="rss-btn ms-3">
+                        <i class="fas fa-rss"></i> RSS Feed
+                    </button>
+                </div>
+                  <!-- Login/Logout buttons -->
+            <div class="ms-3">
+                {% if logged_in %}
+                <span class="navbar-text me-3">
+                    Logged in as: <strong>{{ session['discord_user']['username'] }}</strong>
+                </span>
+                <a href="/logout" class="btn btn-outline-danger btn-sm">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+                {% else %}
+                <a href="/login" class="btn btn-outline-primary btn-sm">
+                    <i class="fa-brands fa-discord"></i> Login with Discord
+                </a>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    </nav>
+    
+
+
+    <div class="container status-page">
+        <div class="mb-4">
+            <i class="status-icon fas fa-check-circle"></i>
+            <h1 class="status-heading mt-2">All Systems Operational</h1>
+            <p class="status-description">Our systems are running smoothly. Check back here for updates.</p>
+        </div>
+
+        <div class="status-card" data-service-name="Bot Hosting Panel">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <span>
+                    <i class="status-icon fas fa-check-circle text-success me-2" data-bs-toggle="tooltip" title="Ping: 12ms"></i>
+                    <strong>
+                        Bot Hosting Panel
+                        <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#panelAddress" role="button" aria-expanded="false" aria-controls="panelAddress"></i>
+                    </strong>
+                </span>
+                <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                    <span class="text-success">Operational</span>
+                    <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="Bot Hosting Panel">
+                        <i class="fas fa-exclamation-circle"></i> Report
+                    </button>
+                </div>
+            </div>
+            <div class="collapse mt-2" id="panelAddress">
+                <p class="text-muted mb-0">IP/URL: https://bot-hosting.net | Location: CA, Ontario, Toronto, Cloudflare, Inc.</p>
+            </div>
+            <div class="status-strip mt-3" id="statusStrip"></div>
+        </div>
+        
+        
+        
+        
+    
+    <div class="status-card" data-service-name="de1 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    de1 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#de1Address" role="button" aria-expanded="false" aria-controls="de1Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="de1 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+            
+        </div>
+        <div class="collapse mt-2" id="de1Address">
+            <p class="text-muted mb-0">IP/URL: 167.235.13.16 | Location: Germany, Saxony, Falkenstein, Hetzner</p>
+        </div>
+    <div class="status-strip mt-3" id="statusStrip"></div>
+    </div>
+
+  
+    <div class="status-card" data-service-name="de2 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    de2 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#de2Address" role="button" aria-expanded="false" aria-controls="de2Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="de2 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="de2Address">
+            <p class="text-muted mb-0">IP/URL: 138.201.21.189 | Location: Germany, Saxony, Falkenstein, Hetzner</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+    </div>
+    <div class="status-card" data-service-name="de3 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    de3 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#de3Address" role="button" aria-expanded="false" aria-controls="de3Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="de3 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="de3Address">
+            <p class="text-muted mb-0">IP/URL: 157.90.181.183 | Location: Germany, Saxony, Falkenstein, Hetzner</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+    </div>
+    <div class="status-card" data-service-name="fi1 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi1 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi1Address" role="button" aria-expanded="false" aria-controls="fi1Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi1 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi1Address">
+            <p class="text-muted mb-0">IP/URL: 95.216.39.179 | Location: Finland, Uusimaa, Helsinki, HETZNER-DC</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi2 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi2 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi2Address" role="button" aria-expanded="false" aria-controls="fi2Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi2 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi2Address">
+            <p class="text-muted mb-0">IP/URL: 95.216.10.105 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi3 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi3 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi3Address" role="button" aria-expanded="false" aria-controls="de2Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi3 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi3Address">
+            <p class="text-muted mb-0">IP/URL: 65.108.103.151 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+    </div>
+    <div class="status-card" data-service-name="fi4 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi4 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi4Address" role="button" aria-expanded="false" aria-controls="fi4Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi4 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi4Address">
+            <p class="text-muted mb-0">IP/URL: 65.21.202.154 | Location: Finland, Uusimaa, Helsinki, Hetzner</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi5 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi5 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi5Address" role="button" aria-expanded="false" aria-controls="fi5Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi5 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi5Address">
+            <p class="text-muted mb-0">IP/URL: 65.108.3.108 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi6 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i>  
+                <strong>
+                    fi6 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi6Address" role="button" aria-expanded="false" aria-controls="fi6Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi6 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi6Address">
+            <p class="text-muted mb-0">IP/URL: 65.108.77.37 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi7 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi7 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi7Address" role="button" aria-expanded="false" aria-controls="fi7Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi7 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi7Address">
+            <p class="text-muted mb-0">IP/URL: 37.27.65.125 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi8 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi8 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi8Address" role="button" aria-expanded="false" aria-controls="fi8Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi8 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi8Address">
+            <p class="text-muted mb-0">IP/URL: 95.217.151.27 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi9 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi9 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi9Address" role="button" aria-expanded="false" aria-controls="fi9Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi9 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi9Address">
+            <p class="text-muted mb-0">IP/URL: 95.216.12.48 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="fi10 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    fi10 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#fi10Address" role="button" aria-expanded="false" aria-controls="fi10Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="fi10 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="fi10Address">
+            <p class="text-muted mb-0">IP/URL: 37.27.169.207 | Location: Finland, Uusimaa, Helsinki, Hetzner Online GmbH</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="us1 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    us1 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#us1Address" role="button" aria-expanded="false" aria-controls="us1Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="us1 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="us1Address">
+            <p class="text-muted mb-0">IP/URL: 103.60.13.254 | Location: US, New York, Rye, DataWagon LLC</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+    <div class="status-card" data-service-name="us2 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    us2 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#us2Address" role="button" aria-expanded="false" aria-controls="us2Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="us2 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="us2Address">
+            <p class="text-muted mb-0">IP/URL: 172.81.128.14 | Location: US, New York, Rye, DataWagon LLC</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+    </div>
+    <div class="status-card" data-service-name="us3 Node">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>
+                <i class="status-icon fas fa-check-circle text-success me-2" 
+                data-bs-toggle="tooltip" 
+                title="Ping: 15ms"></i> 
+                <strong>
+                    us3 Node
+                    <i class="fas fa-chevron-down ms-1" data-bs-toggle="collapse" href="#us3Address" role="button" aria-expanded="false" aria-controls="us3Address"></i>
+                </strong>
+            </span>
+            <div class="d-flex align-items-start align-items-md-center flex-md-row flex-column mt-2 mt-md-0">
+                <span class="text-success">Operational</span>
+                <button class="btn btn-sm btn-outline-danger mt-2 mt-md-0 ms-md-3" data-bs-toggle="modal" data-bs-target="#reportModal"  data-service-name="us3 Node">
+                    <i class="fas fa-exclamation-circle"></i> Report
+                </button>
+            </div>
+        </div>
+        <div class="collapse mt-2" id="us3Address">
+            <p class="text-muted mb-0">IP/URL: 172.81.129.182 | Location: US, New York, Rye, DataWagon LLC</p>
+        </div>
+<div class="status-strip mt-3" id="statusStrip"></div>
+
+    </div>
+        
+    </div>
+    <div class="modal fade" id="webhookModal" tabindex="-1" aria-labelledby="webhookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg">
+          
+                <div class="modal-header bg-gradient-primary text-white rounded-top">
+                    <h5 class="modal-title fw-bold" id="webhookModalLabel">
+                        <i class="fa-brands fa-discord me-2"></i> Configure Discord Webhook
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+    
+                <div class="modal-body">
+                    <p class="text-muted mb-4">
+                        Set up your Discord webhook to stay updated with server notifications. Fill in the details below:
+                    </p>
+                    <form id="webhookForm" novalidate>
+                      
+                        <div class="form-floating mb-4">
+                            <input type="url" class="form-control" id="webhookUrl" placeholder="https://discord.com/api/webhooks/..." required>
+                            <label for="webhookUrl">Webhook URL</label>
+                            <div class="invalid-feedback">
+                                Please provide a valid Discord Webhook URL.
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="webhookName" placeholder="e.g., Server Status Updates">
+                            <label for="webhookName">Webhook Name</label>
+                            <small class="text-muted">Optional: Provide a custom name for the webhook.</small>
+                        </div>
+
+                    </form>
+                </div>
+             
+                <div class="modal-footer bg-light d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i> Cancel
+                    </button>
+                    <button type="button" class="btn btn-primary px-4" id="saveWebhook">
+                        <i class="fas fa-save me-1"></i> Save Webhook
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- Report Modal -->
+<div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-gradient-primary text-white">
+                <h5 class="modal-title d-flex align-items-center" id="reportModalLabel">
+                    <i class="fas fa-bug me-2"></i> Report an Issue
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="mb-3">
+                        <label for="serviceName" class="form-label">Service Name</label>
+                        <input type="text" class="form-control shadow-sm" id="serviceName" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <textarea class="form-control shadow-sm" id="title" rows="1" placeholder="Give a nice title"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="issueDetails" class="form-label">Issue Details</label>
+                        <textarea class="form-control shadow-sm" id="issueDetails" rows="4" placeholder="Describe the issue in detail..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="submitReportButton">Submit Report</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    
+
+    <footer>
+        © 2025 Bot Hosting.net Community All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+document.querySelector('#submitReportButton').addEventListener('click', () => {
+    const serviceName = document.getElementById('serviceName').value;
+    const title = document.getElementById('title').value;
+    const issueDetails = document.getElementById('issueDetails').value;
+
+    if (!serviceName || !title || !issueDetails) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    fetch('/report', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            service_name: serviceName,
+            title: title,
+            issue_details: issueDetails,
+        }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.error) {
+                alert(`Error: ${data.error}`);
+            } else {
+                alert('Issue reported successfully!');
+
+                // Update service statuses dynamically
+                const statuses = data.statuses;
+                statuses.forEach(service => {
+                    updateStatusBar(service);
+                });
+
+                // Reset the form
+                document.getElementById('reportForm').reset();
+
+                // Close the modal
+                const reportModal = document.getElementById('reportModal');
+                const modalInstance = bootstrap.Modal.getInstance(reportModal);
+                modalInstance.hide();
+            }
+        })
+        .catch((error) => {
+            console.error('Error reporting issue:', error);
+        });
+});
+
+
+
+// Listen for the modal show event
+document.addEventListener('show.bs.modal', function (event) {
+    const modal = event.target;
+    if (modal.id === 'reportModal') {
+        const button = event.relatedTarget;
+        const serviceName = button.getAttribute('data-service-name');
+        const serviceNameInput = modal.querySelector('#serviceName');
+        serviceNameInput.value = serviceName;
+    }
+});
+
+  document.getElementById('saveWebhook').addEventListener('click', () => {
+    const webhookUrl = document.getElementById('webhookUrl');
+    const webhookName = document.getElementById('webhookName').value;
+
+
+    const validWebhookPrefix = "https://discord.com/api/webhooks";
+    if (!webhookUrl.value.startsWith(validWebhookPrefix)) {
+        webhookUrl.classList.add('is-invalid');
+        return;
+    } else {
+        webhookUrl.classList.remove('is-invalid');
+    }
+
+
+    console.log('Webhook URL:', webhookUrl.value);
+    console.log('Webhook Name:', webhookName);
+
+    alert('Webhook details saved successfully!');
+
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('webhookModal'));
+    modal.hide();
+});
+document.querySelectorAll('.status-card .fa-chevron-down').forEach(arrow => {
+    const collapseElement = document.querySelector(arrow.getAttribute('href'));
+
+    collapseElement.addEventListener('show.bs.collapse', () => {
+        arrow.classList.add('rotate'); 
+    });
+
+    collapseElement.addEventListener('hide.bs.collapse', () => {
+        setTimeout(() => {
+            arrow.classList.remove('rotate');
+        }, 300); 
+    });
+});
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+// Poll every 10 seconds for live updates
+setInterval(() => {
+    fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+            Object.keys(data).forEach(serviceName => {
+                updateStatusBar(serviceName, data[serviceName]);
+            });
+        })
+        .catch(error => console.error('Error fetching statuses:', error));
+}, 10); // Poll every 10 seconds
+
+/**
+ * Update the status bar and icon dynamically for all users
+ * @param {string} serviceName - The name of the service
+ * @param {object} service - Service data containing status and progress
+ */
+ function updateStatusBar(serviceName, service) {
+    const statusCards = document.querySelectorAll('.status-card');
+
+    statusCards.forEach(card => {
+        const button = card.querySelector('button[data-service-name]');
+        if (!button) return;
+
+        const buttonServiceName = button.getAttribute('data-service-name');
+        if (buttonServiceName.trim().toLowerCase() === serviceName.trim().toLowerCase()) {
+            const iconElement = card.querySelector('.status-icon');
+            const progressBar = card.querySelector('.progress-bar');
+
+            if (!iconElement || !progressBar) {
+                console.warn(`Elements missing for service: ${serviceName}`);
+                return;
+            }
+
+            // Update the status icon
+            iconElement.className = `status-icon fas fa-${service.icon} text-${service.color}`;
+
+            // Update the progress bar
+            const uptimePercentage = service.progress;
+            progressBar.style.background = `linear-gradient(to right, green ${uptimePercentage}%, red ${100 - uptimePercentage}%)`;
+            progressBar.setAttribute('aria-valuenow', uptimePercentage);
+        }
+    });
+}
+
+function fetchAndUpdateStatus() {
+    fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+            Object.keys(data).forEach(serviceName => {
+                const service = data[serviceName];
+
+                // Find the "Report" button for this service
+                const reportButton = document.querySelector(`button[data-service-name="${serviceName}"]`);
+
+                if (reportButton) {
+                    // Update the progress bar
+                    const progressBarContainer = reportButton.closest('.status-card').querySelector('.progress');
+                    if (progressBarContainer) {
+                        const uptimeBar = progressBarContainer.querySelector('#uptime-bar');
+                        const downtimeBar = progressBarContainer.querySelector('#downtime-bar');
+
+                        if (uptimeBar && downtimeBar) {
+                            // Calculate percentages
+                            const uptimePercentage = service.progress; // e.g., 96.325
+                            const downtimePercentage = 100 - uptimePercentage;
+
+                            // Update widths
+                            uptimeBar.style.width = `${uptimePercentage}%`;
+                            downtimeBar.style.width = `${downtimePercentage}%`;
+
+                            // Update text (optional)
+                            uptimeBar.textContent = `${uptimePercentage.toFixed(3)}%`;
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching statuses:', error);
+        });
+}
+
+// Call fetchAndUpdateStatus on page load
+document.addEventListener('DOMContentLoaded', fetchAndUpdateStatus);
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/status")
+        .then(response => response.json())
+        .then(statuses => {
+            const baseLines = 157;  // Full PC strip count
+            const minLines = 50;    // Scaled for mobile view
+
+            for (const [serviceName, details] of Object.entries(statuses)) {
+                const serviceCard = document.querySelector(`[data-service-name="${serviceName}"]`);
+                if (!serviceCard) continue;
+
+                const statusStrip = serviceCard.querySelector(".status-strip");
+                if (!statusStrip) continue;
+
+                // Clear existing strips
+                statusStrip.innerHTML = "";
+
+                // **Responsive line count logic**
+                const totalLines = window.innerWidth > 768 ? baseLines : minLines;
+
+                // Calculate the filled and empty strips
+                let filledLines = Math.round((details.progress / 100) * totalLines);
+                let emptyLines = totalLines - filledLines;
+
+                // Ensure visibility of at least one red strip if progress < 100%
+                if (filledLines === totalLines) {
+                    filledLines = totalLines - 1;
+                    emptyLines = 1;
+                }
+
+                // ✅ Generate filled (green) and empty (red) strips
+                for (let i = 0; i < filledLines; i++) {
+                    const line = document.createElement("div");
+                    line.className = "status-line bg-success";
+                    statusStrip.appendChild(line);
+                }
+
+                for (let i = 0; i < emptyLines; i++) {
+                    const line = document.createElement("div");
+                    line.className = "status-line bg-danger";
+                    statusStrip.appendChild(line);
+                }
+
+                // ✅ Update grid dynamically for full row usage
+                statusStrip.style.gridTemplateColumns = `repeat(${totalLines}, 1fr)`;
+            }
+        })
+        .catch(error => console.error("Error fetching service statuses:", error));
+});
+
+
+
+</script>
+</html>

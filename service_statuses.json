@@ -1,0 +1,104 @@
+{
+    "Bot Hosting Panel": {
+        "status": "Critical Issue",
+        "progress": 50,
+        "icon": "times-circle",
+        "color": "danger"
+    },
+    "de1 Node": {
+        "status": "Operational",
+        "progress": 99.989,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "de2 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "de3 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi1 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi2 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi3 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi4 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi5 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi6 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi7 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi8 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi9 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "fi10 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "us1 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    },
+    "us2 Node": {
+        "status": "Critical Issue",
+        "progress": 50,
+        "icon": "times-circle",
+        "color": "danger"
+    },
+    "us3 Node": {
+        "status": "Operational",
+        "progress": 99.765,
+        "icon": "check-circle",
+        "color": "success"
+    }
+}
