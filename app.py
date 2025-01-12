@@ -4,11 +4,11 @@ from flask import Flask, render_template, request, jsonify, redirect, session, u
 from requests_oauthlib import OAuth2Session
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # Replace with a secure key in production
+app.secret_key = os.urandom(24)
 
 # Discord OAuth2 Config
-DISCORD_CLIENT_ID = "1325410613111029830"
-DISCORD_CLIENT_SECRET = "hP_0GU9uFXjLdWHlTStXUuXH9jfyA_xS"
+DISCORD_CLIENT_ID = "AGENT_INSERT_CLIENT_id"
+DISCORD_CLIENT_SECRET = "AGENT_INSERT_CLIENT_SECRET"
 DISCORD_REDIRECT_URI = "http://127.0.0.1:5000/callback"
 DISCORD_API_BASE_URL = "https://discord.com/api"
 DISCORD_AUTH_URL = f"{DISCORD_API_BASE_URL}/oauth2/authorize"
@@ -18,10 +18,10 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 REPORTS_FILE = "reports.json"
 
-# Ensure the reports.json file exists
+
 if not os.path.exists(REPORTS_FILE):
     with open(REPORTS_FILE, "w") as f:
-        json.dump([], f)  # Initialize with an empty list
+        json.dump([], f)
 
 
 def load_reports():
@@ -78,10 +78,10 @@ def logout():
     session.pop("discord_user", None)
     session.pop("discord_token", None)
     return redirect(url_for("index"))
-# File to store service statuses
+
 SERVICE_STATUSES_FILE = "service_statuses.json"
 
-# Initialize the service statuses JSON if it doesn't exist
+
 def initialize_service_statuses():
     if not os.path.exists(SERVICE_STATUSES_FILE):
         initial_statuses = {
@@ -94,7 +94,7 @@ def initialize_service_statuses():
         with open(SERVICE_STATUSES_FILE, "w") as f:
             json.dump(initial_statuses, f, indent=4)
 
-# Load service statuses from the JSON file
+
 def load_service_statuses():
     try:
         with open(SERVICE_STATUSES_FILE, "r") as f:
@@ -129,7 +129,7 @@ def report_issue():
         service_statuses[data["service_name"]]["color"] = "danger"
         save_service_statuses(service_statuses)
 
-    # Save the report to the reports.json
+
     discord_user = session["discord_user"]
     avatar_url = f"https://cdn.discordapp.com/avatars/{discord_user['id']}/{discord_user['avatar']}.png"
     report = {
@@ -165,7 +165,7 @@ def get_status():
 
 
 
-# Initialize the statuses when the server starts
+
 initialize_service_statuses()
 
 
