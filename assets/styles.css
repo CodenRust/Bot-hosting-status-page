@@ -1,0 +1,709 @@
+body {
+    background: linear-gradient(120deg, #f8f9fa, #e9ecef);
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bg-gradient-primary {
+background: linear-gradient(120deg, #5865f2, #7289da);
+}
+
+
+.modal-content {
+transform: translateY(-30px);
+opacity: 0;
+transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal.show .modal-content {
+transform: translateY(0);
+opacity: 1;
+}
+
+
+.form-floating label {
+color: #99aab5;
+transition: all 0.2s ease-in-out;
+}
+
+.form-floating input:focus + label {
+color: #7289da;
+font-weight: 500;
+}
+
+
+.modal-footer {
+border-top: none;
+background-color: #f6f6f9;
+}
+
+
+.btn-primary {
+background-color: #5865f2;
+border-color: #5865f2;
+transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+background-color: #667eea;
+box-shadow: 0 4px 10px rgba(88, 101, 242, 0.5);
+transform: translateY(-2px);
+transition: all 0.3s ease-in-out;
+}
+
+
+.btn-outline-secondary {
+color: #6c757d;
+border-color: #6c757d;
+background-color: transparent;
+transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-secondary:hover {
+color: #ffffff;
+background-color: #495057;
+border-color: #495057;
+box-shadow: 0 4px 10px rgba(73, 80, 87, 0.4);
+transform: translateY(-2px);
+}
+.btn-outline-secondary,
+.btn-primary {
+transition: all 0.3s ease-in-out;
+}
+
+.collapse {
+text-align: left;
+}
+
+.status-card .fas.fa-chevron-down {
+transition: transform 0.3s ease-in-out;
+}
+
+.status-card .collapsed .fas.fa-chevron-down {
+transform: rotate(-90deg);
+}
+
+
+.form-control {
+background-color: #f6f6f9;
+border: 1px solid #d4d8dd;
+color: #2c2f33;
+transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-control:focus {
+border-color: #7289da;
+box-shadow: 0 0 5px rgba(114, 137, 218, 0.5);
+}
+
+
+.invalid-feedback {
+color: #f04747;
+}
+
+
+.modal-header {
+border-bottom: none;
+padding: 1.5rem 1rem;
+font-family: 'Poppins', sans-serif;
+}
+.status-strip {
+display: grid;
+grid-template-columns: repeat(157, 1fr);
+gap: 1px;
+width: 100%;
+justify-content: stretch;
+}
+
+.status-line {
+width: 100%;
+height: 25px;
+border-radius: 8px;
+}
+
+
+
+.modal-title {
+font-weight: bold;
+font-size: 1.5rem;
+color: #ffffff;
+font-family: 'Poppins', sans-serif;
+display: flex;
+align-items: center;
+}
+
+.modal-title i {
+font-size: 1.8rem;
+margin-right: 0.9rem;
+}
+
+
+.modal-content {
+background-color: #ffffff;
+border-radius: 12px;
+}
+
+.btn-close {
+background-color: transparent;
+border: none;
+transition: all 0.3s ease-in-out;
+outline: none;
+}
+
+
+.btn-close:hover {
+background-color: rgba(220, 53, 69, 0.1);
+color: #dc3545;
+box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+transform: scale(1.004);
+}
+
+
+.btn-close:focus {
+outline: none;
+box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.rss-btn {
+display: flex;
+align-items: center;
+padding: 10px 20px;
+font-size: 1rem;
+color: #6c757d;
+background-color: #ffffff;
+border: 1px solid #dee2e6;
+border-radius: 8px;
+transition: all 0.3s ease-in-out;
+}
+
+.rss-btn i {
+margin-right: 8px;
+}
+
+.rss-btn:hover {
+background-color: #f8f9fa;
+border-color: #adb5bd;
+color: #495057;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+transform: translateY(-2px);
+transition: all 0.3s ease-in-out;
+}
+
+
+.status-page {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.status-icon {
+    font-size: 3rem;
+    color: #28a745;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.status-heading {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #212529;
+}
+
+.status-description {
+    font-size: 1rem;
+    color: #6c757d;
+}
+.status-card {
+display: block;
+margin: 20px 0;
+padding: 20px;
+border-radius: 12px;
+background-color: #ffffff;
+border: 1px solid #dee2e6;
+box-shadow: none;
+transition: all 0.3s ease-in-out;
+text-align: left;
+}
+.tooltip-inner {
+background-color: #000;
+color: #fff;
+border-radius: 4px;
+padding: 5px 10px;
+font-size: 0.875rem;
+}
+
+.tooltip-arrow {
+display: none;
+}
+
+
+.status-card .status-icon {
+font-size: 1rem;
+color: #28a745;
+animation: none;
+}
+@media (max-width: 768px) {
+.status-line {
+    height: 18px;
+    width: 4px;
+}
+}
+
+.progress {
+height: 24px;
+border-radius: 12px;
+}
+
+
+
+
+
+.time-filters .btn {
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+}
+
+.time-filters .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    text-align: center;
+    color: #6c757d;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+.navbar-brand {
+margin-right: auto;
+}
+
+.rss-btn {
+width: 100%;
+margin: 0.5rem 0;
+justify-content: center;
+}
+
+.navbar-collapse {
+padding: 1rem;
+}
+}
+
+@media (max-width: 768px) {
+.status-card .btn-outline-danger {
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.status-card .d-flex.align-items-start {
+    flex-direction: column;
+}
+}
+
+
+.modal-header {
+padding: 1rem;
+border-bottom: none;
+border-radius: 12px 12px 0 0;
+}
+
+
+.btn-close {
+outline: none;
+box-shadow: none;
+background-color: transparent;
+transition: all 0.3s ease-in-out;
+}
+.btn-close:hover {
+background-color: rgba(255, 255, 255, 0.3);
+transform: scale(1.1);
+}
+
+
+.modal-body {
+padding: 1.5rem;
+font-size: 0.9rem;
+}
+.form-control {
+font-size: 0.9rem;
+border-radius: 8px;
+border: 1px solid #dee2e6;
+padding: 0.8rem;
+background-color: #f8f9fa;
+}
+.form-control:focus {
+border-color: #5865f2;
+box-shadow: 0 0 6px rgba(88, 101, 242, 0.3);
+}
+
+
+.modal-footer .btn {
+font-size: 1rem;
+padding: 0.6rem 1rem;
+border-radius: 8px;
+}
+.modal-footer .btn-primary {
+background-color: #5865f2;
+border: none;
+}
+.modal-footer .btn-primary:hover {
+background-color: #7289da;
+box-shadow: 0 4px 10px rgba(88, 101, 242, 0.4);
+}
+.modal-footer .btn-outline-secondary {
+border-color: #dee2e6;
+color: #6c757d;
+}
+.modal-footer .btn-outline-secondary:hover {
+background-color: #f8f9fa;
+color: #495057;
+}
+
+
+@media (max-width: 576px) {
+.modal-dialog {
+width: 90%;
+margin: 0 auto;
+}
+.modal-footer .btn {
+width: 100%;
+margin-bottom: 0.5rem;
+}
+}
+
+.dark-mode {
+background: #212529;
+color: #f8f9fa;
+}
+
+/* Navbar */
+.dark-mode .navbar {
+background-color: #343a40;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+color: #f8f9fa;
+}
+
+/* Buttons */
+.dark-mode .btn-primary {
+background-color: #495057;
+border-color: #495057;
+color: #f8f9fa;
+}
+
+.dark-mode .btn-primary:hover {
+background-color: #6c757d;
+box-shadow: 0 4px 10px rgba(108, 117, 125, 0.5);
+}
+
+.dark-mode .btn-outline-secondary {
+color: #f8f9fa;
+border-color: #6c757d;
+background-color: transparent;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+background-color: #6c757d;
+border-color: #868e96;
+box-shadow: 0 4px 10px rgba(108, 117, 125, 0.4);
+}
+
+/* RSS and Webhook Buttons */
+.dark-mode .rss-btn {
+background-color: #343a40;
+color: #f8f9fa;
+border-color: #495057;
+}
+
+.dark-mode .rss-btn:hover {
+background-color: #495057;
+color: #e9ecef;
+}
+
+/* Modals */
+.dark-mode .modal-content {
+background-color: #343a40;
+color: #f8f9fa;
+border-radius: 12px;
+}
+
+.dark-mode .modal-footer {
+background-color: #212529;
+}
+
+.dark-mode .btn-close {
+color: #f8f9fa;
+background-color: transparent;
+}
+
+.dark-mode .btn-close:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Forms */
+.dark-mode .form-control {
+background-color: #343a40;
+color: #f8f9fa;
+border-color: #495057;
+}
+
+.dark-mode .form-control:focus {
+border-color: #7289da;
+box-shadow: 0 0 6px rgba(88, 101, 242, 0.3);
+}
+
+/* Status Cards */
+.dark-mode .status-card {
+background-color: #343a40;
+border-color: #495057;
+color: #f8f9fa;
+}
+
+.dark-mode .status-card .status-icon {
+color: #28a745;
+}
+
+/* Tooltips */
+.dark-mode .tooltip-inner {
+background-color: #495057;
+color: #f8f9fa;
+}
+
+/* Footer */
+.dark-mode footer {
+background-color: #343a40;
+color: #f8f9fa;
+box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode footer a {
+color: #7289da;
+}
+
+.dark-mode footer a:hover {
+color: #aab2ff;
+}
+
+/* Status Page */
+.dark-mode .status-page {
+color: #f8f9fa;
+}
+
+.dark-mode .status-icon {
+color: #28a745;
+}
+
+/* Progress Bar */
+.dark-mode .progress {
+background-color: #343a40;
+}
+
+.dark-mode .progress-bar {
+background-color: #5865f2;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+.dark-mode .status-line {
+background-color: #495057;
+}
+}
+
+.dark-mode .status-heading {
+color: #28a745;
+}
+
+.dark-mode .status-description {
+color: #adb5bd;
+}
+
+.dark-mode .nav-link {
+color: #f8f9fa;
+transition: color 0.3s ease-in-out;
+}
+
+.dark-mode .nav-link:hover {
+color: #aab2ff;
+}
+/* General Modal Styling for Dark Mode */
+.dark-mode .modal-content {
+background-color: #343a40;
+color: #f8f9fa;
+border-radius: 12px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Modal Header */
+.dark-mode .modal-header {
+background: linear-gradient(120deg, #5865f2, #7289da); /* Gradient for header */
+color: #ffffff;
+}
+
+/* Close Button */
+.dark-mode .btn-close {
+filter: invert(1);
+background-color: transparent;
+}
+
+.dark-mode .btn-close:hover {
+background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Body */
+.dark-mode .modal-body {
+background-color: #343a40;
+color: #f8f9fa;
+}
+
+
+
+
+/* General Form Control Styling for Dark Mode */
+.dark-mode .form-control {
+background-color: #495057;
+color: #f8f9fa;
+border-color: #6c757d;
+transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Placeholder Styling */
+.dark-mode .form-control::placeholder {
+color: #adb5bd;
+opacity: 1;
+transition: color 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+/* General Scrollbar Styles */
+::-webkit-scrollbar {
+width: 10px;
+height: 10px;
+}
+
+::-webkit-scrollbar-track {
+background: #e9ecef;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #adb5bd;
+border-radius: 10px;
+border: 2px solid #e9ecef;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #6c757d;
+}
+
+/* Dark Mode Scrollbar */
+.dark-mode ::-webkit-scrollbar-track {
+background: #343a40;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+background: #6c757d;
+border: 2px solid #343a40;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+background: #495057;
+}
+
+
+.dark-mode .nav-link.active {
+color: #d6d8db !important;
+}
+
+/* Muted Text in Dark Mode */
+.dark-mode .text-muted {
+color: #d6d8db !important;
+}
+
+/* Modal Footer in Dark Mode */
+.dark-mode .modal-footer {
+background-color: #343a40 !important;
+color: #d6d8db !important;
+border-top: 1px solid #495057;
+}
+/* Focus State for Input Fields */
+.dark-mode .form-control:focus {
+background-color: #495057;
+border-color: #7289da;
+color: #f8f9fa;
+box-shadow: 0 0 6px rgba(88, 101, 242, 0.5);
+}
+
+/* Placeholder Styling on Focus */
+.dark-mode .form-control:focus::placeholder {
+color: transparent;
+}
+
+/* Placeholder Styling on Blur */
+.dark-mode .form-control:not(:focus)::placeholder {
+color: #adb5bd;
+}
+
+/* Invalid Feedback */
+.dark-mode .invalid-feedback {
+color: #f8d7da;
+}
+
+/* Modal Footer */
+.dark-mode .modal-footer {
+background-color: #212529;
+border-top: 1px solid #495057;
+}
+
+.dark-mode .nav-link active{
+color: #495057;
+}
+/* Buttons */
+.dark-mode .btn-primary {
+background-color: #495057;
+color: #f8f9fa;
+border-color: #495057;
+}
+
+.dark-mode .btn-primary:hover {
+background-color: #6c757d;
+box-shadow: 0 4px 10px rgba(108, 117, 125, 0.5);
+}
+
+.dark-mode .btn-outline-secondary {
+color: #adb5bd;
+border-color: #6c757d;
+background-color: transparent;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+background-color: #495057;
+color: #f8f9fa;
+}
+
+/* Tooltip (if present) */
+.dark-mode .tooltip-inner {
+background-color: #495057;
+color: #f8f9fa;
+}

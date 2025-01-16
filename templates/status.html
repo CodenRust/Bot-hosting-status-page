@@ -7,400 +7,7 @@
     <link rel="icon" href="https://bot-hosting.net/assets/img/bothosting.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(120deg, #f8f9fa, #e9ecef);
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .navbar {
-            background-color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-.bg-gradient-primary {
-    background: linear-gradient(120deg, #5865f2, #7289da);
-}
-
-
-.modal-content {
-    transform: translateY(-30px);
-    opacity: 0;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-}
-
-.modal.show .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-
-.form-floating label {
-    color: #99aab5;
-    transition: all 0.2s ease-in-out;
-}
-
-.form-floating input:focus + label {
-    color: #7289da;
-    font-weight: 500;
-}
-
-
-.modal-footer {
-    border-top: none;
-    background-color: #f6f6f9;
-}
-
-
-.btn-primary {
-    background-color: #5865f2;
-    border-color: #5865f2;
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.btn-primary:hover {
-    background-color: #667eea;
-    box-shadow: 0 4px 10px rgba(88, 101, 242, 0.5);
-    transform: translateY(-2px);
-    transition: all 0.3s ease-in-out;
-}
-
-
-.btn-outline-secondary {
-    color: #6c757d;
-    border-color: #6c757d;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
-}
-
-.btn-outline-secondary:hover {
-    color: #ffffff;
-    background-color: #495057;
-    border-color: #495057;
-    box-shadow: 0 4px 10px rgba(73, 80, 87, 0.4);
-    transform: translateY(-2px);
-}
-.btn-outline-secondary,
-.btn-primary {
-    transition: all 0.3s ease-in-out;
-}
-
-.collapse {
-    text-align: left;
-}
-
-.status-card .fas.fa-chevron-down {
-    transition: transform 0.3s ease-in-out;
-}
-
-.status-card .collapsed .fas.fa-chevron-down {
-    transform: rotate(-90deg);
-}
-
-
-.form-control {
-    background-color: #f6f6f9;
-    border: 1px solid #d4d8dd;
-    color: #2c2f33;
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.form-control:focus {
-    border-color: #7289da;
-    box-shadow: 0 0 5px rgba(114, 137, 218, 0.5);
-}
-
-
-.invalid-feedback {
-    color: #f04747;
-}
-
-
-.modal-header {
-    border-bottom: none;
-    padding: 1.5rem 1rem;
-    font-family: 'Poppins', sans-serif;
-}
-.status-strip {
-    display: grid;
-    grid-template-columns: repeat(157, 1fr);
-    gap: 1px;
-    width: 100%;
-    justify-content: stretch;
-}
-
-.status-line {
-    width: 100%;
-    height: 25px;
-    border-radius: 8px;
-}
-
-
-
-.modal-title {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-}
-
-.modal-title i {
-    font-size: 1.8rem;
-    margin-right: 0.9rem;
-}
-
-
-.modal-content {
-    background-color: #ffffff;
-    border-radius: 12px;
-}
-
-.btn-close {
-    background-color: transparent;
-    border: none;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-}
-
-
-.btn-close:hover {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
-    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
-    transform: scale(1.004);
-}
-
-
-.btn-close:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
-}
-
-        .rss-btn {
-        display: flex;
-        align-items: center;
-        padding: 10px 20px;
-        font-size: 1rem;
-        color: #6c757d;
-        background-color: #ffffff;
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .rss-btn i {
-        margin-right: 8px;
-    }
-
-    .rss-btn:hover {
-    background-color: #f8f9fa;
-    border-color: #adb5bd;
-    color: #495057;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-    transition: all 0.3s ease-in-out;
-}
-
-
-        .status-page {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .status-icon {
-            font-size: 3rem;
-            color: #28a745;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .status-heading {
-            font-size: 1.75rem;
-            font-weight: bold;
-            color: #212529;
-        }
-
-        .status-description {
-            font-size: 1rem;
-            color: #6c757d;
-        }
-.status-card {
-    display: block;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    border: 1px solid #dee2e6;
-    box-shadow: none;
-    transition: all 0.3s ease-in-out;
-    text-align: left;
-}
-.tooltip-inner {
-    background-color: #000;
-    color: #fff;
-    border-radius: 4px;
-    padding: 5px 10px;
-    font-size: 0.875rem;
-}
-
-.tooltip-arrow {
-    display: none;
-}
-
-
-.status-card .status-icon {
-    font-size: 1rem;
-    color: #28a745;
-    animation: none;
-}
-
-
-    .progress {
-        height: 24px;
-        border-radius: 12px;
-    }
-
-
-
-
-
-        .time-filters .btn {
-            border-radius: 50px;
-            padding: 0.5rem 1.5rem;
-        }
-
-        .time-filters .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 20px 0;
-            text-align: center;
-            color: #6c757d;
-            font-size: 0.9rem;
-            background-color: #ffffff;
-            box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-@media (max-width: 768px) {
-    .navbar-brand {
-        margin-right: auto;
-    }
-
-    .rss-btn {
-        width: 100%;
-        margin: 0.5rem 0;
-        justify-content: center;
-    }
-
-    .navbar-collapse {
-        padding: 1rem;
-    }
-}
-
-@media (max-width: 768px) {
-        .status-card .btn-outline-danger {
-            margin-top: 0.5rem;
-            width: 100%;
-        }
-
-        .status-card .d-flex.align-items-start {
-            flex-direction: column;
-        }
-    }
-
-
-.modal-header {
-    padding: 1rem;
-    border-bottom: none;
-    border-radius: 12px 12px 0 0;
-}
-
-
-.btn-close {
-    outline: none;
-    box-shadow: none;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
-}
-.btn-close:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-
-.modal-body {
-    padding: 1.5rem;
-    font-size: 0.9rem;
-}
-.form-control {
-    font-size: 0.9rem;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
-    padding: 0.8rem;
-    background-color: #f8f9fa;
-}
-.form-control:focus {
-    border-color: #5865f2;
-    box-shadow: 0 0 6px rgba(88, 101, 242, 0.3);
-}
-
-
-.modal-footer .btn {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-    border-radius: 8px;
-}
-.modal-footer .btn-primary {
-    background-color: #5865f2;
-    border: none;
-}
-.modal-footer .btn-primary:hover {
-    background-color: #7289da;
-    box-shadow: 0 4px 10px rgba(88, 101, 242, 0.4);
-}
-.modal-footer .btn-outline-secondary {
-    border-color: #dee2e6;
-    color: #6c757d;
-}
-.modal-footer .btn-outline-secondary:hover {
-    background-color: #f8f9fa;
-    color: #495057;
-}
-
-
-@media (max-width: 576px) {
-    .modal-dialog {
-        width: 90%;
-        margin: 0 auto;
-    }
-    .modal-footer .btn {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-}
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
@@ -425,35 +32,29 @@
                             <i class="fa-brands fa-discord"></i> Webhooks
                         </button>
                     </li>
-                    <li class="nav-item d-lg-none">
-                        <button class="rss-btn mt-3 w-100">
-                            <i class="fas fa-rss"></i> RSS Feed
-                        </button>
-                    </li>
+
                 </ul>
                 <div class="d-none d-lg-flex ms-3">
                     <button class="rss-btn" data-bs-toggle="modal" data-bs-target="#webhookModal">
                         <i class="fa-brands fa-discord"></i> Webhooks
                     </button>
-                    <button class="rss-btn ms-3">
-                        <i class="fas fa-rss"></i> RSS Feed
-                    </button>
+
                 </div>
-                  <!-- Login/Logout buttons -->
-            <div class="ms-3">
-                {% if logged_in %}
-                <span class="navbar-text me-3">
-                    Logged in as: <strong>{{ session['discord_user']['username'] }}</strong>
-                </span>
-                <a href="/logout" class="btn btn-outline-danger btn-sm">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-                {% else %}
-                <a href="/login" class="btn btn-outline-primary btn-sm">
-                    <i class="fa-brands fa-discord"></i> Login with Discord
-                </a>
-                {% endif %}
-            </div>
+                <div class="ms-3">
+                    {% if logged_in %}
+                    <a href="/logout" class="rss-btn text-decoration-none">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                    {% else %}
+                    <a href="/login" class="rss-btn text-decoration-none">
+                        <i class="fa-brands fa-discord"></i> Login with Discord
+                    </a>
+                    {% endif %}
+                </div>
+
+                <button id="darkModeToggle" class="rss-btn ms-3">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </button>
             </div>
         </div>
     </nav>
@@ -894,18 +495,48 @@
                     </p>
                     <form id="webhookForm" novalidate>
 
+                        <!-- Webhook URL Field -->
                         <div class="form-floating mb-4">
-                            <input type="url" class="form-control" id="webhookUrl" placeholder="https://discord.com/api/webhooks/..." required>
+                            <input type="url" class="form-control" id="webhookUrl" placeholder="" required>
                             <label for="webhookUrl">Webhook URL</label>
                             <div class="invalid-feedback">
                                 Please provide a valid Discord Webhook URL.
                             </div>
                         </div>
 
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control" id="webhookName" placeholder="e.g., Server Status Updates">
-                            <label for="webhookName">Webhook Name</label>
-                            <small class="text-muted">Optional: Provide a custom name for the webhook.</small>
+                        <!-- Notification Categories -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Notification Categories</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="categoryAll">
+                                <label class="form-check-label" for="categoryAll">
+                                    All
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="categoryWebsites">
+                                <label class="form-check-label" for="categoryWebsites">
+                                    Websites
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="categoryNodes">
+                                <label class="form-check-label" for="categoryNodes">
+                                    Nodes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="categoryIncidentAlert">
+                                <label class="form-check-label" for="categoryIncidentAlert">
+                                    Incident Alert
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="categoryNodeCapacity">
+                                <label class="form-check-label" for="categoryNodeCapacity">
+                                    Node Capacity Alert
+                                </label>
+                            </div>
                         </div>
 
                     </form>
@@ -1156,13 +787,12 @@ function fetchAndUpdateStatus() {
 
 
 document.addEventListener('DOMContentLoaded', fetchAndUpdateStatus);
-
 document.addEventListener("DOMContentLoaded", function () {
     fetch("/status")
-        .then(response => response.json())
-        .then(statuses => {
+        .then((response) => response.json())
+        .then((statuses) => {
             const baseLines = 157;
-            const minLines = 50;    // Scaled for mobile view
+            const mobileMaxLines = 30;
 
             for (const [serviceName, details] of Object.entries(statuses)) {
                 const serviceCard = document.querySelector(`[data-service-name="${serviceName}"]`);
@@ -1171,21 +801,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 const statusStrip = serviceCard.querySelector(".status-strip");
                 if (!statusStrip) continue;
 
-
                 statusStrip.innerHTML = "";
 
 
-                const totalLines = window.innerWidth > 768 ? baseLines : minLines;
+                const totalLines = window.innerWidth > 768 ? baseLines : mobileMaxLines;
 
 
-                let filledLines = Math.round((details.progress / 100) * totalLines);
-                let emptyLines = totalLines - filledLines;
-
-
-                if (filledLines === totalLines) {
-                    filledLines = totalLines - 1;
-                    emptyLines = 1;
-                }
+                const incidents = Math.min(details.incidents || 0, totalLines);
+                const filledLines = totalLines - incidents;
 
 
                 for (let i = 0; i < filledLines; i++) {
@@ -1194,7 +817,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     statusStrip.appendChild(line);
                 }
 
-                for (let i = 0; i < emptyLines; i++) {
+                // Add red bars for incidents
+                for (let i = 0; i < incidents; i++) {
                     const line = document.createElement("div");
                     line.className = "status-line bg-danger";
                     statusStrip.appendChild(line);
@@ -1204,10 +828,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 statusStrip.style.gridTemplateColumns = `repeat(${totalLines}, 1fr)`;
             }
         })
-        .catch(error => console.error("Error fetching service statuses:", error));
+        .catch((error) => console.error("Error fetching service statuses:", error));
 });
+const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
 
+        // Function to set dark mode based on system preference
+        function setDarkModePreference() {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            body.classList.toggle('dark-mode', prefersDarkMode);
+            darkModeToggle.innerHTML = prefersDarkMode
+                ? '<i class="fas fa-sun"></i> Light Mode'
+                : '<i class="fas fa-moon"></i> Dark Mode';
+        }
 
+        // Sync with system changes in real-time
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setDarkModePreference);
 
+        // Toggle button manually
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            darkModeToggle.innerHTML = isDarkMode
+                ? '<i class="fas fa-sun"></i> Light Mode'
+                : '<i class="fas fa-moon"></i> Dark Mode';
+        });
+
+        // Initial check on page load
+        setDarkModePreference();
 </script>
 </html>
